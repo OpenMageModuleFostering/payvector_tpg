@@ -1425,17 +1425,28 @@ class PayVector_Tpg_Model_Direct extends Mage_Payment_Model_Method_Abstract
 		else
 		{
 			$currentTimestamp = Mage::getSingleton('core/date')->gmtDate();
-			$gatewayEntryPointsListXML = $todTransactionOutputData->getGatewayEntryPoints()->toXmlString();
 
-			$gatewayEntryPointsTable = Mage::getResourceModel('tpg/gatewayentrypoints');
-			$gatewayEntryPointsTable->saveEntryPoints($gatewayEntryPointsListXML, $currentTimestamp);
+			if (!empty($todTransactionOutputData))
+			{
+				$szCrossReference = $todTransactionOutputData->getCrossReference();
+				$payment->setTransactionId($szCrossReference);
 
+				$gatewayEntryPoints = $todTransactionOutputData->getGatewayEntryPoints();
+
+				if (!empty($gatewayEntryPoints))
+				{
+					$gatewayEntryPointsListXML = $todTransactionOutputData->getGatewayEntryPoints()->toXmlString();
+
+					$gatewayEntryPointsTable = Mage::getResourceModel('tpg/gatewayentrypoints');
+					$gatewayEntryPointsTable->saveEntryPoints($gatewayEntryPointsListXML, $currentTimestamp);
+				}
+			}
+
+			
 			$szLogMessage = "Transaction could not be completed for OrderID: " . $szOrderID . ". Result details: ";
 			$szNotificationMessage = 'Payment Processor Response: ' . $troTransactionResultObject->getMessage();
-			$szCrossReference = $todTransactionOutputData->getCrossReference();
 			/* serve out the CrossReference as the TransactionId - this need to be done to enable the "Refund" button
 			   in the Magento CreditMemo internal refund mechanism */
-			$payment->setTransactionId($szCrossReference);
 			switch($troTransactionResultObject->getStatusCode())
 			{
 				case 0:

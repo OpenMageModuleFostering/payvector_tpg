@@ -25,6 +25,29 @@
 	                <input type="text" id="<?php echo $_code; ?>_cc_number" name="payment<?php echo $fieldCode; ?>[cc_number]" title="<?php echo $this->__('Card Number') ?>" class="input-text required-entry validate-digits validate-length maximum-length-20" value=""/>
 	            </div>
 	        </li>
+			<li>
+				<label for="<?php echo $_code; ?>_cc_ss_start_month"><?php echo $this->__('Start Date') ?></label><br />
+				<div class="input-box">
+					<div class="v-fix">
+						<select id="<?php echo $_code; ?>_cc_ss_start_month" name="payment<?php echo $fieldCode; ?>[cc_ss_start_month]" class="month">
+							<option value=""></option>
+							<?php $_ccStartMonth = $this->getInfoData('cc_ss_start_month') ?>
+							<?php foreach ($this->getCcStartMonths() as $k=>$v): ?>
+								<option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccStartMonth): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
+							<?php endforeach ?>
+						</select>
+					</div>
+					<div class="v-fix">
+						<?php $_ccStartYear = $this->getInfoData('cc_ss_start_year') ?>
+						<select id="<?php echo $_code ?>_cc_ss_start_year" name="payment<?php echo $fieldCode; ?>[cc_ss_start_year]" class="year">
+							<option value=""></option>
+							<?php foreach ($this->getCcStartYears() as $k=>$v): ?>
+								<option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccStartYear): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
+							<?php endforeach ?>
+						</select>
+					</div>
+				</div>
+			</li>
 	        <li>
 	         	<label for="<?php echo $_code; ?>_expiration"><?php echo $this->__('Expiration Date') ?> <span class="required">*</span></label><br/>
 	         	<div class="input-box">
@@ -42,27 +65,6 @@
 	                <select id="<?php echo $_code; ?>_expiration_yr" name="payment<?php echo $fieldCode; ?>[cc_exp_year]" class="year required-entry">
 	                <?php foreach ($this->getCcYears() as $k=>$v): ?>
 	                    <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccExpYear): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
-	                <?php endforeach ?>
-	                </select>
-	                </div>
-	            </div>
-	        </li>
-	        <li>
-	         	<label for="<?php echo $_code; ?>_cc_ss_start_month"><?php echo $this->__('Start Date') ?></label><br />
-	         	<div class="input-box">
-	                <div class="v-fix">
-	                <select id="<?php echo $_code; ?>_cc_ss_start_month" name="payment<?php echo $fieldCode; ?>[cc_ss_start_month]" class="month">
-	                <?php $_ccStartMonth = $this->getInfoData('cc_ss_start_month') ?>
-	                <?php foreach ($this->getCcStartMonths() as $k=>$v): ?>
-	                    <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccStartMonth): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
-	                <?php endforeach ?>
-	                </select>
-	                </div>
-	                <div class="v-fix">
-	                <?php $_ccStartYear = $this->getInfoData('cc_ss_start_year') ?>
-	                <select id="<?php echo $_code ?>_cc_ss_start_year" name="payment<?php echo $fieldCode; ?>[cc_ss_start_year]" class="year">
-	                <?php foreach ($this->getCcStartYears() as $k=>$v): ?>
-	                    <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccStartYear): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
 	                <?php endforeach ?>
 	                </select>
 	                </div>
