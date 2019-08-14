@@ -2,7 +2,7 @@
 <?php $_code = $this->getMethodCode() ?>
 <?php $route = $this->getRequest()->getRequestedRouteName(); if($route == 'onestepcheckout'){ $fieldCode = '['.$_code.']'; } else { $fieldCode = ''; }?> 
 		
-<?php if ($direct->getConfigData('mode') == PayVector_Tpg_Model_Source_PaymentMode::PAYMENT_MODE_HOSTED_PAYMENT_FORM) {?>
+<?php /*if ($direct->getConfigData('mode') == PayVector_Tpg_Model_Source_PaymentMode::PAYMENT_MODE_HOSTED_PAYMENT_FORM) {?>
 	<fieldset class="form-list">
 		<ul id="payment_form_<?php echo $_code ?>" style="display:none">
 	        <li>
@@ -10,7 +10,7 @@
 	        </li>
 	    </ul>
 	</fieldset>
-<?php } else {?>
+<?php } else {*/?>
 	<fieldset class="form-list">
 	    <ul id="payment_form_<?php echo $_code; ?>" style="display:none">
 	        <li>
@@ -86,4 +86,4 @@
 	        </li>
 	    </ul>
 	</fieldset>
-<?php }?>
+<?php //}?>

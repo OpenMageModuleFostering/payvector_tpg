@@ -57,10 +57,10 @@ class PayVector_Tpg_PaymentController extends Mage_Core_Controller_Front_Action
 	 * @return unknown
 	 */
 	public function callback3dAction()
-	{
+	{   
 		$boError = false;
 		$szMessage = '';
-		$checkout = Mage::getSingleton('checkout/type_onepage');
+		$checkout = new PayVector_Checkout_Model_Type_Onepage();//Mage::getSingleton('checkout/type_onepage');
 		$session = Mage::getSingleton('checkout/session');
 		$szPaymentProcessorResponse = '';
 		$nVersion = Mage::getModel('tpg/direct')->getVersion();

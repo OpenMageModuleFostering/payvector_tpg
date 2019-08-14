@@ -96,9 +96,6 @@ class PayVector_Tpg_Model_Direct extends Mage_Payment_Model_Method_Abstract
 		else
 		{
 			$mode = $this->getConfigData('mode');
-			if (Mage::app()->getStore()->isAdmin()) {
-				$mode = PayVector_Tpg_Model_Source_PaymentMode::PAYMENT_MODE_DIRECT_API;
-			}
 			// TODO : need to finish for non Direct API methods
 			switch($mode)
 			{
@@ -185,9 +182,6 @@ class PayVector_Tpg_Model_Direct extends Mage_Payment_Model_Method_Abstract
 					->setAcsurl(null)
 					->setPaymentprocessorresponse(null);
 				$payment->setAmount($amount);
-				if (Mage::app()->getStore()->isAdmin()) {
-					$mode = PayVector_Tpg_Model_Source_PaymentMode::PAYMENT_MODE_DIRECT_API;
-				}
 				switch($mode)
 				{
 					case PayVector_Tpg_Model_Source_PaymentMode::PAYMENT_MODE_DIRECT_API:
@@ -229,24 +223,8 @@ class PayVector_Tpg_Model_Direct extends Mage_Payment_Model_Method_Abstract
 	 */
 	public function _runTransaction(Varien_Object $payment, $amount)
 	{
-		if (Mage::app()->getStore()->isAdmin()) {
-		
-				$MotoMerchantID = $this->getConfigData('motomerchantid');
-				$MotoPassword = $this->getConfigData('motopassword');
-				if($MotoMerchantID!='' && $MotoPassword!=''){
-					$MerchantID=$MotoMerchantID;
-					$Password=$MotoPassword;
-				}else{
-					$MerchantID = $this->getConfigData('merchantid');
-					$Password = $this->getConfigData('password');
-				}
-		}else{
-		
-				$MerchantID = $this->getConfigData('merchantid');
-				$Password = $this->getConfigData('password');
-		
-		}
-		
+		$MerchantID = $this->getConfigData('merchantid');
+		$Password = $this->getConfigData('password');
 		$SecretKey = $this->getConfigData('secretkey');
 		// assign payment form field values to variables
 		$order = $payment->getOrder();
@@ -307,11 +285,7 @@ class PayVector_Tpg_Model_Direct extends Mage_Payment_Model_Method_Abstract
 		$cdtCardDetailsTransaction->getTransactionDetails()->getTransactionControl()->getEchoAmountReceived()->setValue(true);
 		$cdtCardDetailsTransaction->getTransactionDetails()->getTransactionControl()->getEchoAVSCheckResult()->setValue(true);
 		$cdtCardDetailsTransaction->getTransactionDetails()->getTransactionControl()->getEchoCV2CheckResult()->setValue(true);
-		if (Mage::app()->getStore()->isAdmin()) {
-		  $cdtCardDetailsTransaction->getTransactionDetails()->getTransactionControl()->getThreeDSecureOverridePolicy()->setValue(false);
-		}else{
-		  $cdtCardDetailsTransaction->getTransactionDetails()->getTransactionControl()->getThreeDSecureOverridePolicy()->setValue(true);
-		}
+		$cdtCardDetailsTransaction->getTransactionDetails()->getTransactionControl()->getThreeDSecureOverridePolicy()->setValue(true);
 		$cdtCardDetailsTransaction->getTransactionDetails()->getTransactionControl()->getDuplicateDelay()->setValue(60);
 		$cdtCardDetailsTransaction->getTransactionDetails()->getThreeDSecureBrowserDetails()->getDeviceCategory()->setValue(0);
 		$cdtCardDetailsTransaction->getTransactionDetails()->getThreeDSecureBrowserDetails()->setAcceptHeaders("*/*");

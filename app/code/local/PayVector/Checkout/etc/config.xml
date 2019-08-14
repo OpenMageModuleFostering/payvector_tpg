@@ -6,19 +6,19 @@
       </PayVector_Checkout>
    </modules>
    <global>
-   	  <models>
+   	  <!--<models>
 	    	<checkout>
 	    		<rewrite>
 			          <type_onepage>PayVector_Checkout_Model_Type_Onepage</type_onepage>
 			    </rewrite>
 	    	</checkout>
-	    </models>
-      <blocks>
+	    </models>-->
+      <!--<blocks>
         <checkout>
           <rewrite>
             <onepage_payment_methods>PayVector_Checkout_Block_Onepage_Payment_Methods</onepage_payment_methods>
           </rewrite>
         </checkout>
-      </blocks>
+      </blocks>-->
    </global>
 </config>

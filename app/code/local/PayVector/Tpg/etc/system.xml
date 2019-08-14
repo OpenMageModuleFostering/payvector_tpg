@@ -69,6 +69,22 @@
               <show_in_website>1</show_in_website>
               <show_in_store>0</show_in_store>
             </password>
+            <motomerchantid translate="label">
+              <label>MOTO Merchant ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>71</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </motomerchantid>
+            <motopassword translate="label">
+              <label>MOTO Password</label>
+              <frontend_type>password</frontend_type>
+              <sort_order>72</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </motopassword>
             <presharedkey translate="label">
               <label>Pre Shared Key</label>
               <frontend_type>text</frontend_type>
