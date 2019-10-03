@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/PayVector_Tpg",
+    "name": "OpenMageModuleFostering\/PayVector_Tpg",
     "type": "magento-module",
     "license": "Open-Software-License-(OSL)",
     "homepage": "",
-    "description": "Supports 3DSecure transactions through Direct/API and Hosted Payment From integration methods",
+    "description": "Supports 3DSecure transactions through Direct\/API and Hosted Payment From integration methods",
     "authors": [
-    {
-        "name": "Iridium Corporation",
-        "email": "support@iridiumcorp.co.uk"
-    }
-],
+        {
+            "name": "Iridium Corporation",
+            "email": "support@iridiumcorp.co.uk"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
