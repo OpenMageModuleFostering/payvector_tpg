@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/PayVector_Tpg",
+    "name": "openmage-module-fostering\/payvector_tpg",
     "type": "magento-module",
-    "license": "Open-Software-License-(OSL)",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "Supports 3DSecure transactions through Direct\/API and Hosted Payment From integration methods",
     "authors": [
